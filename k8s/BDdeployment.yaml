@@ -1,10 +1,11 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgre
 spec:
   selector:
-    matchLabels:
+    matchLabels: 
       app: postgre
   template:
     metadata:
@@ -12,20 +13,18 @@ spec:
         app: postgre
     spec:
       containers:
-        - name: postgre
-          image: postgres:15.0
-          ports:
-          - containerPort: 5432
-          env:
-          - name: POSTGRES_DB
-            value: "kubenews"
-          - name: POSTGRES_USER
-            value: "kubenews"
-          - name: POSTGRES_PASSWORD
-            value: "Pg#123"
-
+      - name: postgre
+        image: postgres:15.1
+        ports:
+        - containerPort: 5432 
+        env:
+        - name: POSTGRES_DB
+          value: "kubenews"
+        - name: POSTGRES_USER
+          value: "kubenews"
+        - name: POSTGRES_PASSWORD
+          value: "Pg#123"        
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
